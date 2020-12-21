@@ -50,7 +50,7 @@ $ cd ~
 $ git clone https://notabug.org/pgimeno/mmus2mid.git
 $ cd mmus2mid
 $ make
-$ cd ~/bin  # a folder that is included in my $PATH
+$ cd ~/bin  # a folder that is included $PATH
 $ ln -s ~/mmus2mid/mmus2mid
 $ cd ~/doom-assets
 $ mmus2mid doom-wad/musics/*.mus
@@ -58,10 +58,28 @@ $ mmus2mid doom-wad/musics/*.mus
 
 Play midi audio
 
-Roland-SC-55.sf2 from [here](https://www.vogons.org/viewtopic.php?t=45600&start=120)
-
 ```
 $ sudo apt install fluidsynth fluid-soundfont-gs
-$ fluidsynth --audio-driver=alsa -o audio.alsa.device=hw:0 /usr/share/sounds/sf2/FluidR3_GM.sf2 doom1-wad/musics/d_e1m1.mid
-$ fluidsynth --audio-driver alsa -o audio.alsa.device=hw:0 Roland-SC-55-Presets.sf2 doom-wad/musics/d_e1m1.mid
+$ fluidsynth \
+    --audio-driver=alsa \
+    -o audio.alsa.device=hw:0 \
+    /usr/share/sounds/sf2/FluidR3_GM.sf2 \
+    doom1-wad/musics/d_e1m1.mid
 ```
+
+Play through the Doom soundtrack using the Roland SC-55 sound font.
+
+`Roland-SC-55-Presets.sf2` from [here](https://www.vogons.org/viewtopic.php?t=45600&start=120)
+
+```bash
+$ fluidsynth \
+    --audio-driver alsa \
+    -o audio.alsa.device=hw:0 \
+    Roland-SC-55-Presets.sf2 \
+    doom-wad/musics/*.mid
+```
+
+## Further Reading
+
+* [Ted's Linux MIDI Guide](http://tedfelix.com/linux/linux-midi.html)
+* [Doom Wiki: Music](https://doomwiki.org/wiki/Music)
